@@ -14,7 +14,7 @@ import os
 import sys
 
 # Add src directory to path
-sys.path.append('../src')
+sys.path.append('src')
 
 from preprocess import TicketPreprocessor
 from vectorize import TextVectorizer
@@ -66,8 +66,8 @@ def load_models():
     """Load trained models and vectorizers"""
     try:
         # Check if models exist
-        model_path = '../outputs/best_model.pkl'
-        vectorizer_path = '../outputs/vectorizer.pkl'
+        model_path = 'outputs/best_model.pkl'
+        vectorizer_path = 'outputs/vectorizer.pkl'
         
         if not os.path.exists(model_path) or not os.path.exists(vectorizer_path):
             return None, None, "Models not found. Please train models first using train_model.py"
@@ -82,7 +82,7 @@ def load_models():
 def load_dataset():
     """Load the dataset"""
     try:
-        df = pd.read_csv('../data/tickets.csv')
+        df = pd.read_csv('data/tickets.csv')
         return df
     except Exception as e:
         return None
@@ -318,7 +318,7 @@ def create_model_insights_interface():
     
     # Try to load model results
     try:
-        with open('../outputs/model_results.json', 'r') as f:
+        with open('outputs/model_results.json', 'r') as f:
             model_results = json.load(f)
         
         # Model comparison

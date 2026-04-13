@@ -374,7 +374,7 @@ This project is licensed under the MIT License. See LICENSE file for details.
 
 ## Author & Credits
 
-**Project Lead:** Sai Praveen - Senior NLP Engineer & Machine Learning Developer
+**Project Lead:** Sai Praveen -NLP Engineer & Machine Learning Developer
 
 **Expertise:**
 - Natural Language Processing (NLP)
