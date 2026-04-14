@@ -362,9 +362,202 @@ Response:
 - **Customization**: Tailored solutions for specific needs
 - **Optimization**: Performance tuning and scaling
 
-## License
+## User Guide
 
-This project is licensed under the MIT License. See LICENSE file for details.
+### Quick Start
+
+This guide will help you get started with the Support Ticket Classification System.
+
+#### Prerequisites
+- Python 3.8 or higher
+- Internet connection for package installation
+
+#### Installation Steps
+
+1. **Navigate to Project Directory**
+   ```bash
+   cd c:/tempp/projects/FUTURE_ML_02
+   ```
+
+2. **Install Dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Download NLTK Data** (automatic on first run)
+   ```bash
+   python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords'); nltk.download('wordnet')"
+   ```
+
+### Using the System
+
+#### 1. Interactive Web Dashboard
+
+**Launch the Dashboard:**
+```bash
+streamlit run app/dashboard.py
+```
+
+**Dashboard Features:**
+- **Classification Tab**: Enter ticket text for real-time predictions
+- **Batch Processing**: Upload CSV files for bulk classification
+- **Data Exploration**: View ticket distributions and statistics
+- **Model Insights**: Compare model performance metrics
+
+**How to Use:**
+1. Open browser to `http://localhost:8501`
+2. Navigate between tabs using the sidebar
+3. Enter ticket text in the Classification tab
+4. View predictions with confidence scores
+5. Use batch processing for multiple tickets
+
+#### 2. Jupyter Notebook Analysis
+
+**Open the Analysis Notebook:**
+```bash
+jupyter notebook notebook/analysis_fixed.ipynb
+```
+
+**Notebook Sections:**
+1. **Data Loading**: Explore the dataset structure
+2. **Preprocessing**: Analyze text cleaning and processing
+3. **Feature Extraction**: Understand TF-IDF vectorization
+4. **Model Training**: Train and compare multiple models
+5. **Evaluation**: View performance metrics and visualizations
+6. **Predictions**: Test with sample tickets
+7. **Business Impact**: Calculate ROI and operational benefits
+
+#### 3. Command Line Usage
+
+**Train Models:**
+```bash
+cd src
+python train_model.py
+```
+
+**Test System:**
+```bash
+python test_system.py
+```
+
+**Individual Predictions:**
+```python
+from src.predict import TicketPredictor
+
+# Initialize predictor
+predictor = TicketPredictor(
+    model_path='outputs/best_model.pkl',
+    vectorizer_path='outputs/vectorizer.pkl'
+)
+
+# Make prediction
+result = predictor.predict_complete("I can't log into my account")
+print(f"Category: {result['predicted_category']}")
+print(f"Priority: {result['predicted_priority']}")
+```
+
+### File Structure Guide
+
+```
+support_ticket_nlp/
+|
+| data/
+|   | tickets.csv                    # Your support ticket dataset
+|
+| src/                              # Core Python modules
+|   | preprocess.py                  # Text cleaning and processing
+|   | vectorize.py                   # Feature extraction (TF-IDF)
+|   | train_model.py                 # Model training pipeline
+|   | predict.py                     # Making predictions
+|   | evaluate.py                    # Model evaluation
+|
+| notebook/
+|   | analysis_fixed.ipynb           # Complete analysis notebook
+|
+| app/
+|   | dashboard.py                   # Streamlit web interface
+|
+| outputs/                          # Generated files
+|   | best_model.pkl                 # Trained ML model
+|   | vectorizer.pkl                 # Text vectorizer
+|   | model_results.json             # Performance metrics
+|   | confusion_matrix.png           # Model visualization
+|
+| requirements.txt                  # Python dependencies
+| README.md                         # This file
+| test_system.py                    # System demonstration
+```
+
+### Common Use Cases
+
+#### 1. Daily Operations
+- **Ticket Triage**: Use dashboard for real-time classification
+- **Bulk Processing**: Upload daily ticket batches
+- **Performance Monitoring**: Check model accuracy weekly
+
+#### 2. Analysis & Insights
+- **Trend Analysis**: Use notebook for deep analysis
+- **Model Comparison**: Compare different algorithms
+- **Business Reporting**: Generate impact reports
+
+#### 3. Development & Customization
+- **Model Retraining**: Retrain with new data monthly
+- **Custom Categories**: Modify preprocessing for new categories
+- **API Integration**: Use predict.py for custom integrations
+
+### Troubleshooting
+
+#### Common Issues
+
+1. **Import Errors**
+   - Ensure running from project root directory
+   - Check that all dependencies are installed
+   - Verify file paths are correct
+
+2. **Model Loading Errors**
+   - Run training first: `cd src && python train_model.py`
+   - Check outputs directory exists
+   - Verify model files are not corrupted
+
+3. **Dashboard Not Loading**
+   - Check Streamlit version: `streamlit --version`
+   - Ensure port 8501 is available
+   - Try restarting the application
+
+#### Performance Tips
+
+1. **For Large Datasets**
+   - Reduce `max_features` in vectorizer
+   - Use sample data for initial testing
+   - Consider batch processing
+
+2. **For Better Accuracy**
+   - Collect more training data
+   - Improve text preprocessing
+   - Try different model parameters
+
+3. **For Faster Processing**
+   - Use Naive Bayes for quick predictions
+   - Implement caching for repeated predictions
+   - Consider GPU acceleration for large models
+
+### Support
+
+**Getting Help:**
+- Check the troubleshooting section above
+- Review the analysis notebook for detailed examples
+- Examine the source code for implementation details
+- Test with the provided demo script
+
+**System Requirements:**
+- **Minimum**: 4GB RAM, Python 3.8+
+- **Recommended**: 8GB RAM, Python 3.9+
+- **Storage**: 500MB for models and data
+
+**Performance Benchmarks:**
+- **Processing Time**: < 1 second per ticket
+- **Memory Usage**: ~200MB for models
+- **Accuracy**: 85%+ (varies by data quality)
 
 ## Acknowledgments
 
